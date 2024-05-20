@@ -1,0 +1,45 @@
+% $Id: introduction.tex 1784 2012-04-27 23:29:31Z nicolas.cardozo $
+% !TEX root = main.tex
+
+\chapter{State of the Art}
+\label{cha:state_of_the_art}
+
+In this chapter, we explore the state of the art in visualization and debugging 
+tools for reinforcement learning programs. The most relevant tools are presented, 
+and their advantages and disadvantages are discussed.
+
+As a reference solution for the problem outlined in the previous chapter, we 
+will consider back-in-time debuggers, which allow the user to go back in time 
+and observe the program's state at a previous moment. Therefore, we take 
+Delorean \cite{delorean} as a reference, which is a back-in-time debugger for 
+JavaScript programs. Most debuggers do not consider this approach of rewinding 
+to a specific point in execution, thereby missing out on several opportunities; 
+for instance, testing different variable values within the same execution 
+context to better understand errors or explore hypothetical scenarios in the 
+program's execution evolution. These functionalities are precisely what we are 
+interested in working on and understanding in reinforcement learning programs.
+
+
+Por otro lado, los programas de aprendizaje de maquina (ML) normalmente se debuggean
+con herramientas de visualización que permiten a los desarrolladores observar
+el comportamiento del programa y analizar su estado interno. Sin embargo, estas
+herramientas no son adecuadas para RL, ya que no consideran la naturaleza cíclica
+y adaptativa de los programas de RL. Sin embargo, presentan un paso importante del
+estado del arte para la creación de herramientas de visualización y debuggeado.
+
+Una de estas herramientas, y sin duda la más relevante, es TensorBoard 
+\cite{tensorboard}, una herramienta de visualización para TensorFlow, una de las
+bibliotecas de aprendizaje de maquina más populares. TensorBoard permite a los
+desarrolladores visualizar el comportamiento de sus modelos de aprendizaje de
+maquina, incluyendo gráficos de entrenamiento, distribuciones de variables, y
+visualizaciones de la estructura del modelo. Sin embargo, TensorBoard no permite
+a los desarrolladores interactuar con el modelo durante la ejecución, lo cual
+es esencial para el debuggeado de RL.
+
+
+
+
+
+
+\endinput
+
