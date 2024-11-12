@@ -1,38 +1,38 @@
-% $Id: introduction.tex 1784 2012-04-27 23:29:31Z nicolas.cardozo $
+% $Id: problem.tex 1784 2012-04-27 23:29:31Z nicolas.cardozo $
 % !TEX root = main.tex
 
 \chapter{Problem}
 \label{cha:problem}
 
-Reinforcement learning (RL) programs, like all machine learning (ML) programs, 
+\ac{RL} programs (like all \ac{ML}), 
 have a significant limitation and a major problem: they function as a black box. 
 This means that it is impossible to know how they reached a decision. This poses 
 a problem in many fields, as it often becomes difficult to identify why a model 
 fails to converge or why it does not reach an optimal or expected solution as 
-anticipated by the developer. In the case of RL, this issue is particularly 
+anticipated by the developer. In the case of \ac{RL}, this issue is particula\ac{RL}y 
 pronounced because it is challenging to determine whether the agent is learning 
 correctly or if it is learning something inappropriate.
 
-Furthermore, RL programs are notoriously difficult to debug due to the extensive 
+Furthermore, \ac{RL} programs are notoriously difficult to debug due to the extensive 
 training periods they require, which demand substantial computational power. This 
 complexity makes it incredibly challenging to locate errors, even when using a 
 debugger for standard programs. Traditional debugging tools are often inadequate 
-for tracing the issues in RL due to the intricate and prolonged nature of the 
-training processes. This is because RL programs have an added difficulty: they 
+for tracing the issues in \ac{RL} due to the intricate and prolonged nature of the 
+training processes. This is because \ac{RL} programs have an added difficulty: they 
 operate with a different execution cycle compared to traditional programs.
 
 In conventional software, the execution flow is typically linear and predictable, 
 allowing developers to trace and debug step-by-step with relative ease. However, 
-RL programs involve a continuous loop of learning and adaptation, where an agent 
+\ac{RL} programs involve a continuous loop of learning and adaptation, where an agent 
 interacts with an environment, receives feedback in the form of rewards or 
 penalties, and adjusts its actions accordingly. This cyclical nature makes the 
 process much more complex and less transparent.
 
-In RL, each decision and its subsequent outcome can affect future decisions, 
+In \ac{RL}, each decision and its subsequent outcome can affect future decisions, 
 creating a dynamic and interdependent series of events. This complexity is 
 compounded by the often stochastic nature of environments, where the same action 
 can lead to different results in different contexts or iterations. As a result, 
-understanding and debugging an RL program requires not only tracking individual 
+understanding and debugging \ac{RL} programs require not only tracking individual 
 decisions but also understanding the long-term effects and patterns that emerge 
 over many iterations.
 
@@ -43,16 +43,16 @@ each time an error is encountered. This necessitates advanced tools and methods
 for visualizing the agent's behavior, monitoring its learning progress, and 
 pinpointing issues without having to re-run lengthy training sessions.
 
-Therefore, the distinct execution cycle of RL programs introduces unique 
+Therefore, the distinct execution cycle of \ac{RL} programs introduces unique 
 challenges that demand specialized debugging and visualization tools to ensure 
 effective development and deployment. Addressing these challenges is crucial 
 for advancing the field of reinforcement learning and making its applications 
 more reliable and interpretable.
 
 Therefore, there is a pressing need for a tool that allows for the visualization 
-of an RL agent's behavior and facilitates easier debugging of the program. 
+of an \ac{RL} agent's behavior and facilitates easier debugging of the program. 
 Such a tool would significantly enhance the transparency and interpretability 
-of RL models, making it easier for developers to understand, refine, and correct 
+of \ac{RL} models, making it easier for developers to understand, refine, and correct 
 the learning process. This is a gap in the current landscape, and addressing it 
 is the focus of this work.
 

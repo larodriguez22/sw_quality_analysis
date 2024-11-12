@@ -1,45 +1,263 @@
-% $Id: introduction.tex 1784 2012-04-27 23:29:31Z nicolas.cardozo $
+% $Id: state_of_the_art.tex 1784 2012-04-27 23:29:31Z nicolas.cardozo $
 % !TEX root = main.tex
 
 \chapter{State of the Art}
 \label{cha:state_of_the_art}
 
-In this chapter, we explore the state of the art in visualization and debugging 
-tools for reinforcement learning programs. The most relevant tools are presented, 
-and their advantages and disadvantages are discussed.
+In this chapter, we explore the state of the art, to fully understand the solution 
+for the problem aforementioned, this section is structured in four main parts, that 
+will cover deep understanding into what a debugger is \fref{sec:deb}, what is the 
+state of the art for debugger in other programming languages \fref{sec:other}, what 
+is the state of the art for python debuggers \fref{sec:py}, and finally what is the 
+state of the art for debugging \ac{AI} programs, specifically \ac{RL} programs \fref{sec:ai}.
 
-As a reference solution for the problem outlined in the previous chapter, we 
-will consider back-in-time debuggers, which allow the user to go back in time 
-and observe the program's state at a previous moment. Therefore, we take 
-Delorean \cite{delorean} as a reference, which is a back-in-time debugger for 
-JavaScript programs. Most debuggers do not consider this approach of rewinding 
-to a specific point in execution, thereby missing out on several opportunities; 
-for instance, testing different variable values within the same execution 
-context to better understand errors or explore hypothetical scenarios in the 
-program's execution evolution. These functionalities are precisely what we are 
-interested in working on and understanding in reinforcement learning programs.
+\section{What is a Debugger?}
+\label{sec:deb}
+% Definition of bug
+% -> Bug types
+% Definition of debugging
+% -> Principles of debugging
+% Definition of Debugger
+% -> types of debuggers
+% -> main operations
+A bug is a wrong behavior in a program that causes it to crash or produce incorrect 
+results. These are the type of behaviors that we as programmers want to avoid in our
+programs. However, bugs are common in software development, and they can be caused by 
+many factors, such as incorrect logic, incorrect syntax, or incorrect data. Bugs can
+be difficult to find and fix, especially in large and complex programs. For this work 
+we will focus specifically in run-time semantic errors, which are the ones that allow 
+compilation, and they end up in an abnormal termination of the program, and logic 
+errors, which allow compilation too, but lead to incorrect results. Now this is where 
+debugging comes in. Debugging is the process of finding and reducing the number of 
+bugs or defects in a program\cite{10.1007/978-3-642-32729-2_3}, in practical terms, 
+debugging is defined as the activity that comes after testing when developers identify 
+what the error is and how to fix it \cite{10.1080/08993400802114581}. 
+
+There are several principles that guide the debugging process, these principles are 
+very well explained in the book the Art of debugging with \ac{GDB}, \ac{DDD}, and Eclipse\cite{10.5555/1457534},
+where the fundamental one is the Principle of Confirmation that drives the essence of 
+debugging: fixing a program with bugs is a process of confirming that the things you believe
+to be true are actually true in your code\cite{10.5555/1457534}, basically, 
+when you fin that those assumptions are not true, you have found the bug or a clue to it.
+
+The classic debugging technique the is adding traces in your code in terms of printing the 
+values of several variables as the program is executed, however, this is not the most 
+efficient way to debug a program, and that is why debuggers exist. A debugger is a tool 
+that allows developers to inspect the state of a program while it is running, and to 
+control its execution. Debuggers are essential tools for software development, as they 
+help developers find and fix bugs in their programs. There are many types of 
+debuggers, each with its own set of features and capabilities, but usually the main 
+types of operations that a debugger offers\cite{10.5555/1457534} are:
+
+\begin{itemize}
+    \item Stepping through code: basically you can run the program line by line and step 
+    the execution at certain points. This is usually done by using breakpoints, or stepping, 
+    and continue functions that allow you to go step by step forward in the execution of
+    the program.
+    \item Inspecting variables: you can inspect the current values of variables in your 
+    program this will usually help you to understand the state of the program and lead you 
+    to possible clues on where the bug is.
+    \item Changing the program state: you can change the values of variables in your program, 
+    this is useful when you want to test different scenarios in your program, note that not
+    all debuggers allow this operation.
+\end{itemize}
+
+In summary, a debugger is a tool that allows developers to inspect the state of a program,
+control its execution, and find and fix bugs. Debuggers are essential tools for software 
+development, as they help developers find and fix bugs in their programs. Now as said before, 
+we want to understand \ac{RL} programs, in order to create better code and understand the behavior
+of the agent, and the best way to do this is by creating a debugger for \ac{RL} programs.
+
+\section{State of the art in Other programming languages}
+\label{sec:other}
+Now, we will explore the state of the art in debugging tools in general for different 
+programming languages. There are many debugging tools available for different programming 
+languages, each with its own set of features and capabilities, and most of the IDEs have 
+built-in debugging tools that allow you to inspect the state of your program while it is 
+running. However, there are also standalone debugging tools that can be used with any 
+programming language, and that offer more advanced features and capabilities than the 
+built-in debugging tools of an IDE. In this section we will dive more in depth in different 
+debugging tools for different programming languages.
+
+Some of the most popular debugging tools include \ac{GDB}\cite{stallman2011debugging}, 
+which stands for GNU Project Debugger and is a powerful 
+debugging tool for C and C++ (although it also supports some other programming languages,
+like Ada, Go, or Rust). It helps you to poke around inside your C programs while 
+they are executing and also allows you to see what exactly happens when your program 
+crashes. \ac{GDB} operates on executable files which are binary files produced by the 
+compilation process. \ac{GDB} consists of three major subsystems: first, user interface, which 
+consists of several actual interfaces, plus supporting code. Second, symbol handling, 
+which consists of object file readers, debugging info interpreters, symbol table 
+management, source language expression parsing, type and value printing. And target 
+system handling, which consists of execution control, stack frame analysis, and 
+physical target manipulation\cite{stallman2011debugging}.
+
+As a reference for the type of debuggers we want to use and create for the solution 
+for the problem outlined in the previous chapter, we will consider back-in-time 
+debuggers, which allow the user to go back in time and observe the program's state 
+at a previous moment. Therefore, we take DeloreanJs\cite{delorean23} as a reference, 
+which is a back-in-time debugger for JavaScript programs. Most debuggers do not 
+consider this approach of rewinding to a specific point in execution, thereby 
+missing out on several opportunities; for instance, testing different variable 
+values within the same execution context to better understand errors or explore 
+hypothetical scenarios in the program's execution evolution. These functionalities 
+are precisely what we are interested in working on and understanding in 
+reinforcement learning programs. DeloreanJs has three main features we are looking 
+for in our solution: the ability to navigate through an execution history, modify 
+values within a variable, and resume execution from a timepoint in the 
+past\cite{delorean23}. To do this, they used an extended version of continuations 
+with static analysis, in which the continuations allow to capture the current program 
+state, and the static analysis allows to storage variable's values. There are several 
+other debuggers for Javascript, but most of them had a breakpoint approach, in which,
+they didn't let modification of variables and resume of the current execution.
+
+\section{State of the art in Python}
+\label{sec:py}
+% how is python being excecuted?
+Now most of the \ac{RL} programs are usually written in Python. So a small research was
+made on the state of the art of debugging tools for Python. Python is an easy to learn, 
+powerful programming language. It has efficient high-level data structures and a simple 
+but effective approach to object-oriented programming. Is a dynamic general purpose 
+programming language, that uses interpreter and which can be used in a vast domain 
+of applications\cite{10.5555/2846189}. Internally, Python converts the source code 
+into an intermediate form called bytecodes and then translates this into the native 
+language of the computer and then runs it. The usual bytecode interpreter of Python 
+is CPython\cite{shaw2021cpython}, which is written in C. Of course, there are some 
+other compilers that are written in python, like PyPy.
+
+Now, there are several python debuggers available, in this section we are going to do a 
+small review on some of them, specifically, looking for those who can give us the features 
+require to debug \ac{RL} programs, which are specifically the ability to navigate through
+an execution history (like a time travel debugger), and the ability to modify the values
+of variables and resume the execution from a specific point in time, just like 
+DeloreanJs\cite{delorean23} debugger.
+
+% PDB
+Let's start with \ac{PDB}\cite{python-pdb}, which is the built-in Python Debugger in CPYthon, it is a 
+powerful interactive source code debugger for Python programs. It is implemented as a 
+module that can be used in Python scripts, and it provides a command-line interface 
+for debugging Python programs. \ac{PDB} allows you to set breakpoints, step through 
+code, inspect variables, and evaluate expressions. It also provides a post-mortem 
+debugging feature that allows you to debug a program after it has crashed. However, 
+\ac{PDB} does not have the ability to navigate through an execution history, modify 
+values within a variable, or resume execution from a specific point in time, which 
+are the features we are looking for in our solution.
+
+% PuDB
+Another debugger is PuDB\cite{pudb}, which is a full-screen, console-based visual 
+debugger for Python. It allows you to set breakpoints, step through code, inspect 
+variables, and evaluate expressions. It also provides a post-mortem debugging feature 
+that allows you to debug a program after it has crashed. However, PuDB does not 
+have the ability to navigate through an execution history back in time, modify values 
+within a variable, or resume execution from a specific point in time. Nevertheless, this 
+can be simulated placing breakpoints in the code, and restarting its execution till the 
+breakpoint is reached. The UI makes it possible to go through the code and see the 
+variables and the stack trace, and it is very user-friendly.
+
+% PyTrace
+PyTrace\cite{pytrace} is a time travel recorder/analyzer for Python. It records code execution, variables 
+and stack frames. It has a really nice UI that allows you to navigate through the code, 
+see the variables and the stack trace, and it is very user-friendly. However, it is not 
+a full-featured debugger, it doesn't allow you to change the values of variables, or do 
+any other operation that a debugger would allow you to do. It is more like a tool to 
+understand the behavior of the program, and it allows you to go in time back and forth, 
+having different graphs to see the state of your variables at that moment.
+
+% RevPDB
+\ac{RevPDB}\cite{revdeb} is a reverse debugger for Python programs, it is made using PyPy as interpreter,
+and it allows you to go forward and backward in time, which is an uncommon feature, at least 
+in the open source world. However, it is not a full-featured debugger, it is more like a 
+proof of concept, and it is not as powerful as \ac{PDB} or PuDB. Also, it is not maintained at 
+the same ratio as the other debuggers, as it last update was done for 2016, and it is not as 
+user-friendly as the other debuggers.
+
+% UDB
+\ac{UDB}\cite{udb} is a not open source debugger for Python programs that allows you to go back in time 
+and inspect the state of the program at a previous moment, And it is developed by the Company 
+Undo. \ac{UDB} works on the principle of first recording 
+a program while it is running normally, and then replaying the execution while allowing the 
+user to navigate and inspect state at different points in time. They work at the process 
+level, rewinding and replaying the state of the entire Linux (or Windows) process. Technically, 
+\ac{UDB} does allow new code paths to be executed at replay-time, but these executions are 
+isolated.
+
+\fref{tab:python-debuggers} represents a comparison between the different debuggers for Python, 
+mentioned above, and the features that they offer. 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{c|lllll}
+\textbf{Features}               & \multicolumn{1}{c}{\textbf{PDB}}                                                         & \multicolumn{1}{c}{\textbf{PuDB}}                                                                               & \multicolumn{1}{c}{\textbf{PyTrace}}                                           & \multicolumn{1}{c}{\textbf{RevPDB}}                                                   & \multicolumn{1}{c}{\textbf{UDB}}                                                                                                          \\ \hline
+\textbf{Description}            & \begin{tabular}[c]{@{}l@{}}Terminal debugger based\\ on CPython interpreter\end{tabular} & \begin{tabular}[c]{@{}l@{}}UI Debugger that extends\\ PDB debugger\end{tabular}                                 & Post moretm debugger                                                           & \begin{tabular}[c]{@{}l@{}}Terminal debugger based\\ on PyPy interpreter\end{tabular} & \begin{tabular}[c]{@{}l@{}}Not open source debugger,\\ that creates functionalities \\ for back in time debugging\\ for pdb.\end{tabular} \\
+\textbf{Stepping}               & It allows stepping                                                                       & It allows stepping                                                                                              & It allows stepping                                                             & It allows stepping                                                                    & It allows stepping                                                                                                                        \\
+\textbf{Breakpoints}            & It allows breakpoints                                                                    & It allows breakpoints                                                                                           & Doesn't allow breakpoints                                                      &                                                                                       & It allows breakpoints                                                                                                                     \\
+\textbf{Stepping back}          & \begin{tabular}[c]{@{}l@{}}It can be simulated using \\ jumps through time\end{tabular}  & \begin{tabular}[c]{@{}l@{}}It can be simulated restarting\\ the execution and using \\ breakpoints\end{tabular} & It allows stepping back                                                        & It allows stepping back                                                               & It allows stepping back                                                                                                                   \\
+\textbf{Variables modification} & \begin{tabular}[c]{@{}l@{}}It allows variables\\ modification\end{tabular}               & \begin{tabular}[c]{@{}l@{}}It allows variables\\ modification\end{tabular}                                      & \begin{tabular}[c]{@{}l@{}}Doesn't allow variables\\ modification\end{tabular} & \begin{tabular}[c]{@{}l@{}}It allows variables\\ modification\end{tabular}            & \begin{tabular}[c]{@{}l@{}}It allows variables\\ modification\end{tabular}                                                                \\
+\textbf{UI}                     & \begin{tabular}[c]{@{}l@{}}In it's simple form does \\ not have a UI\end{tabular}        & Does have a UI                                                                                                  & Does have a UI                                                                 & \begin{tabular}[c]{@{}l@{}}In it's simple form does \\ not have a UI\end{tabular}     & Does have a UI                                                                                                                           
+\end{tabular}%
+}
+\caption{}
+\label{tab:my-table}
+\end{table}
 
 
-Por otro lado, los programas de aprendizaje de maquina (ML) normalmente se debuggean
-con herramientas de visualización que permiten a los desarrolladores observar
-el comportamiento del programa y analizar su estado interno. Sin embargo, estas
-herramientas no son adecuadas para RL, ya que no consideran la naturaleza cíclica
-y adaptativa de los programas de RL. Sin embargo, presentan un paso importante del
-estado del arte para la creación de herramientas de visualización y debuggeado.
+\section{State of the art in \ac{AI} programs}
+\label{sec:ai}
 
-Una de estas herramientas, y sin duda la más relevante, es TensorBoard 
-\cite{tensorboard}, una herramienta de visualización para TensorFlow, una de las
-bibliotecas de aprendizaje de maquina más populares. TensorBoard permite a los
-desarrolladores visualizar el comportamiento de sus modelos de aprendizaje de
-maquina, incluyendo gráficos de entrenamiento, distribuciones de variables, y
-visualizaciones de la estructura del modelo. Sin embargo, TensorBoard no permite
-a los desarrolladores interactuar con el modelo durante la ejecución, lo cual
-es esencial para el debuggeado de RL.
+On the other hand, \ac{ML} programs are often debugged using visualization 
+tools that allow developers to observe the program's behavior and analyze its internal state. 
+However, most of the time these tools are postmortem and do not allow developers to interact 
+with the program during execution, this makes these tools not suitable for \ac{RL} as they 
+do not consider that \ac{RL} programs are high dimensional models and are hard to understand, 
+due to a stronger feedback loop between the researcher and the agent. Different from the normal 
+\ac{ML} supervised learning, who involve a static dataset. Nonetheless, they 
+represent an important step in the state-of-the-art for the creation of visualization 
+and debugging tools for \ac{RL} programs.
 
+One of these tools, and undoubtedly the most relevant, is TensorBoard\cite{tensorboard}, a 
+visualization tool for TensorFlow, one of the most popular machine learning libraries. 
+TensorBoard allows developers to visualize the behavior of their machine learning models, 
+including training graphs, variable distributions, and model structure visualizations. However, 
+TensorBoard does not allow developers to interact with the model during execution, which is 
+essential for debugging \ac{RL}.
 
+Another implementation for debugging \ac{RL} programs is \ac{Vizarel} was made by \citet{deshpande2020interactivevisualizationdebuggingrl},
+where they implemented an interactive visualization tool for debugging and interpreting \ac{RL} 
+programs. The system offered different views which encapsulates the spatial and temporal dimensions 
+of agent policies. The tool consists of a set of "viewport" modules, each of which is an abstract 
+entity that can be backed by different specs, conditioned on the underlying data\citet{deshpande2020interactivevisualizationdebuggingrl}. This tool besides 
+is useful to understand the behavior of the agent, doesn't allow the user to interact with the 
+variables during execution, which leads to spend time in the training process without knowing if
+the agent is learning correctly or not.
 
+\citet{Rajan_2023} made another contribution to the field of debugging \ac{RL} programs, by creating a tool 
+called \ac{MDP} Playground. This platform is intent to help developers and researchers to understand
+\ac{RL} agents better on toy complex environments, and to create unit tests characteristics of agents 
+on toy examples of \ac{MDP}s. Basically the problem that they identified was that \ac{RL} programs 
+are fragile and hard to debug, and with deep \ac{RL} research growing, the complexity of the 
+dynamics has increased and researchers have not paid enough attention to the state distribution and 
+reward distribution which \ac{RL} policies work and that has made \ac{RL} programs hard to debug 
+and fragile\cite{Rajan_2023}. The idea with this is to open the box in terms to understand the behavior of the agent 
+while using toy examples, based on the OpenGym library. This work is not scalable, and it is not 
+suitable for real-world applications, but it is a good starting point to understand the behavior of 
+\ac{RL} agents. While this is not a debugger, it can help to debug the program by understanding the 
+behavior of the agent in a controlled environment.
 
+Finally, another recent work made into trying to debug \ac{RL} programs was made by\citet{Steinmetz2021DebuggingAP},
+specifically they were trying to gain trust in \ac{AI} programs using systematic testing. Basically, 
+erroneous program behaviors (called bugs) become bad policy behavior, for example, not reaching the 
+goal, or not learning the correct policy. They propose a systematic testing approach to find these 
+bugs in which they address how to confirm a bug is found and how potential bugs can be found, 
+using the Framework Fuzzing\citet{Steinmetz2021DebuggingAP}.
 
+Now, besides these are very interesting approaches into debugging \ac{RL} programs, there is still
+a gap in the current landscape, and addressing it is the focus of this work. The idea is to see how 
+a debugger that allows the user to navigate through the execution history, modify the values of 
+variables, and resume the execution from a specific point in time, performs into creating
+better \ac{RL} programs.
 
 \endinput
 
