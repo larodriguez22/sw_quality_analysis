@@ -38,7 +38,8 @@
 \RequirePackage{multirow}
 \RequirePackage{paralist}
 \RequirePackage{beramono} %listings font
-\RequirePackage{textcomp}   
+\RequirePackage{textcomp}  
+\RequirePackage{algcompatible}
 
 \newboolean{print}
 \setboolean{print}{false}

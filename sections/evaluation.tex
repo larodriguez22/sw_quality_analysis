@@ -72,12 +72,12 @@ so the original values for the learning rate alpha are exchanged like:
 
 Original equation:
 $
-Q(s, a) \leftarrow (1-\alpha) Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right)
+Q(s, a) \leftarrow (1-\alpha) Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a') \right)
 $
 
 Wrong equation to debug:
 $
-Q(s, a) \leftarrow  \alpha Q(s, a) + (1-\alpha) \left( r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right)
+Q(s, a) \leftarrow  \alpha Q(s, a) + (1-\alpha) \left( r + \gamma \max_{a'} Q(s', a') \right)
 $
 
 In the original equation,  $(1-\alpha) Q(s, a)$ is the current value and $\gamma \max_{a'} Q(s', a')$ the maximum 
@@ -108,6 +108,24 @@ idea here was to modify the rewards so the agent weren't able to learn properly 
 The policy learned by the agent was to stop completely or go super slow, without learning how to drive. So the idea 
 is that the students use Flik to come up with a solution for changing the rewards and make the agent learn a propper 
 way how to drive at the maximum velocity, without stopping, and without crashing with other cars.
+
+% Add way of evaluation, explanation about the survey, questions.
+\section{Evaluation setup}
+\label{sec:evaluation}
+We invited 30 graduate students from Universidad de los Andes that attend the masters \ac{RL} course. Their 
+responses were taken using a forms, and were anonymized and are avaible at \href{https://uniandes-my.sharepoint.com/:x:/g/personal/la_rodriguez_uniandes_edu_co/ESDy89Q-PgVBpYHEZ_CDh_IBhjhS35VFqNrlEjVw_ShY1w?e=lm319K}{this link}. 
+The survey done is similar by the one done by the back in time debugger for JavaScript\cite{delorean23}. Also, the
+questions are divided by 3 main sections:
+\begin{itemize}
+\item General knowledge questions: in which the student describes the familiarity they have using Python as a
+programming language and their own experience using debuggers.
+\item Task questions: in which each students describes the bug encountered in each of the tasks, and the solution 
+ to the problem.
+\item Feedback for the debugger usability: in which the student provides feedback about the use of the debugger 
+for the tasks.
+\end{itemize}
+
+
 
 \endinput
 

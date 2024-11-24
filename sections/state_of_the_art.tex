@@ -141,7 +141,9 @@ code, inspect variables, and evaluate expressions. It also provides a post-morte
 debugging feature that allows you to debug a program after it has crashed. However, 
 \ac{PDB} does not have the ability to navigate through an execution history, modify 
 values within a variable, or resume execution from a specific point in time, which 
-are the features we are looking for in our solution.
+are the features we are looking for in our solution. Additionally, as \ac{PDB} is the main 
+python debugger it has been implemented by several IDEs that provide the missing visual 
+interface that \ac{PDB} has.
 
 % PuDB
 Another debugger is PuDB\cite{pudb}, which is a full-screen, console-based visual 
@@ -200,7 +202,7 @@ mentioned above, and the features that they offer.
 \end{tabular}%
 }
 \caption{}
-\label{tab:my-table}
+\label{tab:python-debuggers}
 \end{table}
 
 
@@ -258,9 +260,6 @@ a gap in the current landscape, and addressing it is the focus of this work. The
 a debugger that allows the user to navigate through the execution history, modify the values of 
 variables, and resume the execution from a specific point in time, performs into creating
 better \ac{RL} programs.
-
-% Section: Explanation of RL
-% common bugs in RL programs.
 
 \endinput
 

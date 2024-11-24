@@ -1,15 +1,72 @@
 % $Id: problem.tex 1784 2012-04-27 23:29:31Z nicolas.cardozo $
 % !TEX root = main.tex
 
-\chapter{Problem}
+\chapter{Introduction to the Problem}
 \label{cha:problem}
+
+\section{Reinforcement Learning}
+
+% Section: Explanation of RL
+% common bugs in RL programs.
+Before starting with the problem let's understand a little bit how \ac{RL} work and why they are 
+important to properly develop in nowdays.
+\ac{RL} algorithms were introduced by \citet{Sutton1998}, the idea behind this 
+algorithms is to learn by interaction with the environment learning the optimal policy without 
+the model of the environment. It uses an agent that learns the value function for a given policy 
+through interaction with the environment to predict an optimal solution and based on the value 
+function, it continuously develops and learns the optimal policy. One of the most common algorithms
+is Q-learning\cite{8836506}, which uses an off-policy control that separates the deferral 
+policy from the learning policy and updates the action selection using the Bellman optimal equations
+and the e-greed policy. As a normal \ac{RL} algorithms, QLearning involves an agent, a set of states
+$S$ and a set of actions $A$ per state. By performing an action $A\in A$, the agent transitions from
+one state to another, which will give a $reward$ to the agent. The goal of the agent is to maximize its 
+total reward. The following snippet \href{alg:qlearning} of code is the usual pseudo algorithm for 
+QLearning off policy algorithms\cite{Sutton1998}.
+
+\begin{algorithm}
+\caption{Q Learning Algorithm}\label{alg:qlearning}
+\begin{algorithmic}
+\Require An environment with states $S$, actions $A$, and reward function $R(s, a)$
+\Require A learning rate $\alpha \in [0, 1]$
+\Require A discount factor $\gamma \in [0, 1]$
+\Require Exploration strategy (e.g., $\epsilon$-greedy)
+\State Initialize Q-table $Q(s, a) \gets 0$ for all $s \in S$, $a \in A$
+\For{each episode}
+    \State Initialize the starting state $s_0$
+    \For{each time step in the episode}
+        \If{exploration step}
+            \State Choose an action $a$ using the exploration strategy (e.g., $\epsilon$-greedy)
+        \Else
+            \State Choose an action $a$ based on the current Q-values: $a = \arg\max\_a Q(s, a)$
+        \EndIf
+        \State Take action $a$, observe reward $r$ and next state $s'$
+        \State Update Q-value: 
+        \[
+        Q(s, a) \gets Q(s, a) + \alpha \left( r + \gamma \max_{a'} Q(s', a')\right)
+        \]
+        \State Set $s \gets s'$
+    \EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\ac{RL} programs have a wide range of applications\cite{8836506}: from control of industial process (improving 
+the performance of the on-line learning control system or optimizing temperature control and power consumtion),
+to computer networking (improving adaptability of Wireless Sensor Networks to changing situations and eliminating 
+the need for system redesing) and even robotics (by providing frameworks and toolkits for designing sophisticated 
+behavioral aspects). Additionally, when developing \ac{RL} programs, the usual issues that arise are logic problems, 
+regarding the learning rate, wrong deffinition for the rewards, all these problems require stronger frameworks in which 
+the development could improve for all \ac{RL} applications, and the first thing to do this by understanding and anlyzing
+the current developements.
+
+\section{Problem}
 
 \ac{RL} programs (like all \ac{ML}), 
 have a significant limitation and a major problem: they function as a black box. 
 This means that it is impossible to know how they reached a decision. This poses 
 a problem in many fields, as it often becomes difficult to identify why a model 
 fails to converge or why it does not reach an optimal or expected solution as 
-anticipated by the developer. In the case of \ac{RL}, this issue is particula\ac{RL}y 
+anticipated by the developer. In the case of \ac{RL}, this issue is particularly 
 pronounced because it is challenging to determine whether the agent is learning 
 correctly or if it is learning something inappropriate.
 
@@ -55,6 +112,7 @@ Such a tool would significantly enhance the transparency and interpretability
 of \ac{RL} models, making it easier for developers to understand, refine, and correct 
 the learning process. This is a gap in the current landscape, and addressing it 
 is the focus of this work.
+
 
 \endinput
 
