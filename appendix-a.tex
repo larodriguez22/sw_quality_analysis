@@ -116,6 +116,7 @@ you get started with Flik.
 {\color[HTML]{222222} d}                & \begin{tabular}[c]{@{}l@{}}Move the current frame count (default one) levels down in the stack trace (to a newer \\ frame).\end{tabular}                                                                                                               &                      &                      &                      \\
 {\color[HTML]{222222} help}             & See a list of available commands.                                                                                                                                                                                                                      &                      &                      &                      \\
 {\color[HTML]{222222} q}                & Quit the debugger and exit.                                                                                                                                                                                                                            &                      &                      &                     
+\label{tab:commands}
 \end{longtable}
 
 \subsection{Tasks Description}
@@ -160,7 +161,7 @@ method. And see in real time the execution of the variables. At some point in th
 that for this case it is not working properly with our method. We then use the commands $back\_to$ 18. 
 Then we change the variable divisor value to 2, and we go step by step again.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{figures/code_changes.png}
     \caption{Code example}
@@ -189,7 +190,7 @@ the board, searching for the goal state (\ie exit states with positive reward of
 moves from state to state, avoiding obstacles and incorrect exit states (which give a reward of $-1$ 
 when used to exit). For $25$ episodes, the result should look like:
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/gridworld_example.png}
     \caption{Gridworld code example}
@@ -218,7 +219,7 @@ in the fewest possible steps. Reaching the exit state gives a reward of $1$, and
 reward to the agent. In each episode the agent starts from any valid position in the grid, for example, 
 the yellow square in the bottom-right room in the figure. For $25$ episodes, the results should look like:
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/rooms_example.png}
     \caption{Rooms code example}
@@ -244,7 +245,7 @@ goes as fast as possible on the road. In the road there are only two lanes, and 
 that the agent must pass without crashing on them. The possible actions for the agent are: straight, 
 slow\_down, speed\_up, steer\_left, steer\_right. The following is the visual interface of this environment.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/cars_example.png}
     \caption{Cars code example}
@@ -267,75 +268,207 @@ flik experiments/cars_example/environment.py
 \section{Results}
 \label{sec:appendix-results}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
-% \usepackage{lscape}
-\begin{landscape}
-\begin{table}[]
+\subsection{General Knowledge Results}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/experience-python.png}
+    \caption{Experience with Python}
+    \label{fig:exp-py}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/experience-rl.png}
+    \caption{Experience with RL}
+    \label{fig:exp-rl}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/experience-terminal.png}
+    \caption{Experience with Terminal}
+    \label{fig:exp-terminal}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/experience-debuggers.png}
+    \caption{Experience with Debuggers}
+    \label{fig:exp-deb}
+\end{figure}
+
+
+\subsection{Tasks Results}
+
+\subsubsection{Task 1: Gridworld}
+
+\begin{table}[H]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{cccc}
+\multicolumn{4}{c}{{\color[HTML]{000000} \textbf{Task 1: Gridworld Experiment.}}}                                                                                                                                                              \\
+{\color[HTML]{000000} \textbf{Values}} & {\color[HTML]{000000} \textbf{Did you manage to finish the task?}} & {\color[HTML]{000000} \textbf{It was easy to solve the task}} & {\color[HTML]{000000} \textbf{Time it took you to find the bug}} \\
+{\color[HTML]{000000} \textbf{5}}      & {\color[HTML]{000000} 15}                                        & {\color[HTML]{000000} 2}                                      & {\color[HTML]{000000} 2}                                         \\
+{\color[HTML]{000000} \textbf{4}}      & {\color[HTML]{000000} 10}                                        & {\color[HTML]{000000} 16}                                     & {\color[HTML]{000000} 12}                                        \\
+{\color[HTML]{000000} \textbf{3}}      & {\color[HTML]{000000} 2}                                         & {\color[HTML]{000000} 5}                                      & {\color[HTML]{000000} 4}                                         \\
+{\color[HTML]{000000} \textbf{2}}      & {\color[HTML]{000000} 0}                                         & {\color[HTML]{000000} 3}                                      & {\color[HTML]{000000} 8}                                         \\
+{\color[HTML]{000000} \textbf{1}}      & {\color[HTML]{000000} 0}                                         & {\color[HTML]{000000} 1}                                      & {\color[HTML]{000000} 1}                                        
+\end{tabular}%
+}
+\caption{Gridworld Results}
+\label{tab:grid-results}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/task1.png}
+    \caption{Results Task 1}
+    \label{fig:task1}
+\end{figure}
+
+
+\subsubsection{Task 2: Rooms}
+
+\begin{table}[H]
 \centering
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{
 >{\columncolor[HTML]{FFFFFF}}c 
 >{\columncolor[HTML]{FFFFFF}}c 
 >{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
 >{\columncolor[HTML]{FFFFFF}}c }
-\multicolumn{11}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{383838} \textbf{Task 2: Rooms Experiment.}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\
-{\color[HTML]{383838} \textbf{}}  & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would like to use this \\ system frequently\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find this system \\ unnecessarily complex\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think the system \\ is easy to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would need technical \\ support to use the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find the various functions of the \\ system quite well integrated\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have found too much \\ inconsistency in this system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think most people would learn \\ to use the system quickly\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I found the system quite \\ awkward to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have felt very safe \\ using the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I would need to learn a lot \\ of things before I could handle the system\end{tabular}}} \\
-{\color[HTML]{383838} \textbf{5}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 2}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 9}                                                                                                            & {\color[HTML]{383838} 6}                                                                                                                    & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 7}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 8.0}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{2}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                            & {\color[HTML]{383838} 6.0}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 2}                                                                                                                    & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 4}                                                                                          & {\color[HTML]{383838} NaN}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{3}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 11.0}                                                                                  & {\color[HTML]{383838} 4}                                                                                                            & {\color[HTML]{383838} 5}                                                                                                                    & {\color[HTML]{383838} 4}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 9}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 4.0}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{4}} & {\color[HTML]{383838} 5}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 8}                                                                                                            & {\color[HTML]{383838} 13}                                                                                                                   & {\color[HTML]{383838} 2}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 7}                                                                                           & {\color[HTML]{383838} 8}                                                                                          & {\color[HTML]{383838} 6.0}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 5}                                                                                            & {\color[HTML]{383838} NaN}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 1}                                                                                                                    & {\color[HTML]{383838} 13}                                                                                                     & {\color[HTML]{383838} 2}                                                                                                             & {\color[HTML]{383838} 3}                                                                                           & {\color[HTML]{383838} 1}                                                                                          & {\color[HTML]{383838} 9.0}                                                                                                                       
+\multicolumn{4}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{Task 2: Rooms Experiment.}}}                                                                                                                                          \\
+{\color[HTML]{000000} \textbf{Values}} & {\color[HTML]{000000} \textbf{Did you manage to finish the task?}} & {\color[HTML]{000000} \textbf{It was easy to solve the task}} & {\color[HTML]{000000} \textbf{Time it took you to find the bug}} \\
+{\color[HTML]{000000} \textbf{4}}      & {\color[HTML]{000000} 13}                                          & {\color[HTML]{000000} 8}                                      & {\color[HTML]{000000} 5}                                         \\
+{\color[HTML]{000000} \textbf{5}}      & {\color[HTML]{000000} 7}                                           & {\color[HTML]{000000} 1}                                      & {\color[HTML]{000000} 4}                                         \\
+{\color[HTML]{000000} \textbf{3}}      & {\color[HTML]{000000} 4}                                           & {\color[HTML]{000000} 11}                                     & {\color[HTML]{000000} 9}                                         \\
+{\color[HTML]{000000} \textbf{1}}      & {\color[HTML]{000000} 2}                                           & {\color[HTML]{000000} 1}                                      & {\color[HTML]{000000} 3}                                         \\
+{\color[HTML]{000000} \textbf{2}}      & {\color[HTML]{000000} 1}                                           & {\color[HTML]{000000} 6}                                      & {\color[HTML]{000000} 6}                                        
 \end{tabular}%
 }
+\caption{Rooms Results}
+\label{tab:rooms-results}
 \end{table}
-\end{landscape}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
-% \usepackage{lscape}
-\begin{landscape}
-\begin{table}[]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/task2.png}
+    \caption{Results Task 2}
+    \label{fig:task2}
+\end{figure}
+
+\subsubsection{Task 3: Cars}
+
+\begin{table}[H]
 \centering
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{
 >{\columncolor[HTML]{FFFFFF}}c 
 >{\columncolor[HTML]{FFFFFF}}c 
 >{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
 >{\columncolor[HTML]{FFFFFF}}c }
-\multicolumn{6}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{383838} \textbf{Task 2: Rooms Experiment.}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \\
-{\color[HTML]{383838} \textbf{}}  & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would like to use this \\ system frequently\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find this system \\ unnecessarily complex\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think the system \\ is easy to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would need technical \\ support to use the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find the various functions of the \\ system quite well integrated\end{tabular}}} \\
-{\color[HTML]{383838} \textbf{5}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 2}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 9}                                                                                                            & {\color[HTML]{383838} 6}                                                                                                                    \\
-{\color[HTML]{383838} \textbf{2}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                            & {\color[HTML]{383838} 6.0}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 2}                                                                                                                    \\
-{\color[HTML]{383838} \textbf{3}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 11.0}                                                                                  & {\color[HTML]{383838} 4}                                                                                                            & {\color[HTML]{383838} 5}                                                                                                                    \\
-{\color[HTML]{383838} \textbf{4}} & {\color[HTML]{383838} 5}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 8}                                                                                                            & {\color[HTML]{383838} 13}                                                                                                                   \\
-{\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 5}                                                                                            & {\color[HTML]{383838} NaN}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 1}                                                                                                                   
+\multicolumn{4}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{Task 3: Cars Experiment.}}}                                                                                                                                           \\
+{\color[HTML]{000000} \textbf{Values}} & {\color[HTML]{000000} \textbf{Did you manage to finish the task?}} & {\color[HTML]{000000} \textbf{It was easy to solve the task}} & {\color[HTML]{000000} \textbf{Time it took you to find the bug}} \\
+{\color[HTML]{000000} \textbf{5}}      & {\color[HTML]{000000} 8}                                           & {\color[HTML]{000000} 2}                                      & {\color[HTML]{000000} 6}                                         \\
+{\color[HTML]{000000} \textbf{3}}      & {\color[HTML]{000000} 6}                                           & {\color[HTML]{000000} 7}                                      & {\color[HTML]{000000} 6}                                         \\
+{\color[HTML]{000000} \textbf{4}}      & {\color[HTML]{000000} 6}                                           & {\color[HTML]{000000} 4}                                      & {\color[HTML]{000000} 5}                                         \\
+{\color[HTML]{000000} \textbf{2}}      & {\color[HTML]{000000} 4}                                           & {\color[HTML]{000000} 10}                                     & {\color[HTML]{000000} 7}                                         \\
+{\color[HTML]{000000} \textbf{1}}      & {\color[HTML]{000000} 3}                                           & {\color[HTML]{000000} 4}                                      & {\color[HTML]{000000} 3}                                        
 \end{tabular}%
 }
+\caption{Cars Results}
+\label{tab:cars-results}
 \end{table}
-\end{landscape}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/task3.png}
+    \caption{Results Task 3}
+    \label{fig:task3}
+\end{figure}
+
+\subsection{Debugger Usability}
+
+% % Tabla larga horizontal
+% \begin{landscape}
+% \begin{table}[]
+% \centering
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c }
+% \multicolumn{11}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{383838} \textbf{Task 2: Rooms Experiment.}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\
+% {\color[HTML]{383838} \textbf{}}  & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would like to use this \\ system frequently\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find this system \\ unnecessarily complex\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think the system \\ is easy to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would need technical \\ support to use the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find the various functions of the \\ system quite well integrated\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have found too much \\ inconsistency in this system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think most people would learn \\ to use the system quickly\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I found the system quite \\ awkward to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have felt very safe \\ using the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I would need to learn a lot \\ of things before I could handle the system\end{tabular}}} \\
+% {\color[HTML]{383838} \textbf{5}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 2}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 9}                                                                                                            & {\color[HTML]{383838} 6}                                                                                                                    & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 7}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 8.0}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{2}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                            & {\color[HTML]{383838} 6.0}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 2}                                                                                                                    & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 4}                                                                                          & {\color[HTML]{383838} NaN}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{3}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 11.0}                                                                                  & {\color[HTML]{383838} 4}                                                                                                            & {\color[HTML]{383838} 5}                                                                                                                    & {\color[HTML]{383838} 4}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 9}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 4.0}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{4}} & {\color[HTML]{383838} 5}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 8}                                                                                                            & {\color[HTML]{383838} 13}                                                                                                                   & {\color[HTML]{383838} 2}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 7}                                                                                           & {\color[HTML]{383838} 8}                                                                                          & {\color[HTML]{383838} 6.0}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 5}                                                                                            & {\color[HTML]{383838} NaN}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 1}                                                                                                                    & {\color[HTML]{383838} 13}                                                                                                     & {\color[HTML]{383838} 2}                                                                                                             & {\color[HTML]{383838} 3}                                                                                           & {\color[HTML]{383838} 1}                                                                                          & {\color[HTML]{383838} 9.0}                                                                                                                       
+% \end{tabular}%
+% }
+% \end{table}
+% \end{landscape}
+
+% % Tabla corta 1, horizontal
+% \begin{landscape}
+% \begin{table}[]
+% \centering
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c }
+% \multicolumn{6}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{383838} \textbf{Task 2: Rooms Experiment.}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      \\
+% {\color[HTML]{383838} \textbf{}}  & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would like to use this \\ system frequently\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find this system \\ unnecessarily complex\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think the system \\ is easy to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think I would need technical \\ support to use the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I find the various functions of the \\ system quite well integrated\end{tabular}}} \\
+% {\color[HTML]{383838} \textbf{5}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 2}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 9}                                                                                                            & {\color[HTML]{383838} 6}                                                                                                                    \\
+% {\color[HTML]{383838} \textbf{2}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                            & {\color[HTML]{383838} 6.0}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 2}                                                                                                                    \\
+% {\color[HTML]{383838} \textbf{3}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 11.0}                                                                                  & {\color[HTML]{383838} 4}                                                                                                            & {\color[HTML]{383838} 5}                                                                                                                    \\
+% {\color[HTML]{383838} \textbf{4}} & {\color[HTML]{383838} 5}                                                                                                      & {\color[HTML]{383838} 7}                                                                                            & {\color[HTML]{383838} 5.0}                                                                                   & {\color[HTML]{383838} 8}                                                                                                            & {\color[HTML]{383838} 13}                                                                                                                   \\
+% {\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 5}                                                                                            & {\color[HTML]{383838} NaN}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 1}                                                                                                                   
+% \end{tabular}%
+% }
+% \end{table}
+% \end{landscape}
 
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
-% \usepackage{lscape}
-\begin{landscape}
-\begin{table}[]
+% % Tabla corta 2 horizontal
+% \begin{landscape}
+% \begin{table}[]
+% \centering
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c 
+% >{\columncolor[HTML]{FFFFFF}}c }
+% \multicolumn{6}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{383838} \textbf{Task 2: Rooms Experiment.}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\
+% {\color[HTML]{383838} \textbf{}}  & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have found too much \\ inconsistency in this system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think most people would learn \\ to use the system quickly\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I found the system quite \\ awkward to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have felt very safe \\ using the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I would need to learn a lot \\ of things before I could handle the system\end{tabular}}} \\
+% {\color[HTML]{383838} \textbf{5}} & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 7}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 8.0}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{2}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 4}                                                                                          & {\color[HTML]{383838} NaN}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{3}} & {\color[HTML]{383838} 4}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 9}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 4.0}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{4}} & {\color[HTML]{383838} 2}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 7}                                                                                           & {\color[HTML]{383838} 8}                                                                                          & {\color[HTML]{383838} 6.0}                                                                                                                        \\
+% {\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 13}                                                                                                     & {\color[HTML]{383838} 2}                                                                                                             & {\color[HTML]{383838} 3}                                                                                           & {\color[HTML]{383838} 1}                                                                                          & {\color[HTML]{383838} 9.0}                                                                                                                       
+% \end{tabular}%
+% }
+% \end{table}
+% \end{landscape}
+
+% Tabla corta 1 
+\begin{table}[H]
 \centering
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{
@@ -354,39 +487,12 @@ flik experiments/cars_example/environment.py
 {\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 13}                                                                                                     & {\color[HTML]{383838} 2}                                                                                                             & {\color[HTML]{383838} 3}                                                                                           & {\color[HTML]{383838} 1}                                                                                          & {\color[HTML]{383838} 9.0}                                                                                                                       
 \end{tabular}%
 }
-\end{table}
-\end{landscape}
-
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
-\begin{table}[]
-\centering
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c }
-\multicolumn{6}{c}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{383838} \textbf{Task 2: Rooms Experiment.}}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 \\
-{\color[HTML]{383838} \textbf{}}  & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have found too much \\ inconsistency in this system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I think most people would learn \\ to use the system quickly\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I found the system quite \\ awkward to use\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I have felt very safe \\ using the system\end{tabular}}} & {\color[HTML]{383838} \textbf{\begin{tabular}[c]{@{}c@{}}I would need to learn a lot \\ of things before I could handle the system\end{tabular}}} \\
-{\color[HTML]{383838} \textbf{5}} & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 7}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 8.0}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{2}} & {\color[HTML]{383838} 7}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 4}                                                                                           & {\color[HTML]{383838} 4}                                                                                          & {\color[HTML]{383838} NaN}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{3}} & {\color[HTML]{383838} 4}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 9}                                                                                           & {\color[HTML]{383838} 7}                                                                                          & {\color[HTML]{383838} 4.0}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{4}} & {\color[HTML]{383838} 2}                                                                                                      & {\color[HTML]{383838} 6}                                                                                                             & {\color[HTML]{383838} 7}                                                                                           & {\color[HTML]{383838} 8}                                                                                          & {\color[HTML]{383838} 6.0}                                                                                                                        \\
-{\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 13}                                                                                                     & {\color[HTML]{383838} 2}                                                                                                             & {\color[HTML]{383838} 3}                                                                                           & {\color[HTML]{383838} 1}                                                                                          & {\color[HTML]{383838} 9.0}                                                                                                                       
-\end{tabular}%
-}
+\caption{General Results Part 1}
+\label{tab:general1-debuggers}
 \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% Beamer presentation requires \usepackage{colortbl} instead of \usepackage[table,xcdraw]{xcolor}
-\begin{table}[]
+% Tabla corta 2
+\begin{table}[H]
 \centering
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{
@@ -405,7 +511,10 @@ flik experiments/cars_example/environment.py
 {\color[HTML]{383838} \textbf{1}} & {\color[HTML]{383838} 1}                                                                                                      & {\color[HTML]{383838} 5}                                                                                            & {\color[HTML]{383838} NaN}                                                                                   & {\color[HTML]{383838} 3}                                                                                                            & {\color[HTML]{383838} 1}                                                                                                                   
 \end{tabular}%
 }
+\caption{General Results Part 2}
+\label{tab:general2-debuggers}
 \end{table}
+
 
 
 \endinput
