@@ -7,6 +7,42 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
+In this work, we presented \ac{Flik}, a back-in-time debugger for \ac{RL} programs.
+We initially had two major problems: First, \ac{RL} programs were very complex in terms of the environment,
+so the developer would have major problems in understanding the behavior of the agent, and
+the possible bug being presented, in the program. Also the complexity of the program, requires
+too much computational power which makes it even harder to interact to. This Lead us to our second problem,
+the interaction between the agent and the environment is very hard to understand, and
+for a developer that needs to debug the program, it is very hard to understand the behavior of the agent
+and the interaction that a possible bug is causing.
+
+A back in time debugger strategy showed being a really good strategy for developing and 
+understanding RL programs. Most of the developers managed to understand the behavior of the agent,
+and find the bug hidden on it. Specifically, \ac{Flik}, a console-based debugger, demonstrated to 
+be a very useful tool to find general bugs that an \ac{RL} program can present during development. 
+The tool that allowed developers to interact with the program during 
+execution, inspect the internal state of the agent, and modify its behavior in real-time. These were 
+important features as we wanted \ac{Flik} to be able to tackle the problem of interaction with the 
+program to be able to inspect in a deeper way the state of the program in terms of variables, and 
+it provides a functionality of interacting with the execution of the program going forward and backwards.
+Additionally, \ac{Flik} had a visual interface, which reduced the complexity of the \ac{RL} program,
+making it easier for the user to inspect the state step by step.
+
 \section{Future Work}
 \label{sec:future-work}
+
+As future work, on proposal form the student's feedback was to optimize memory consumption by 
+using layer cashing in a similar was as git and docker way save states, so instead of saving the
+history of the entire variables (globals and locals), and all the metadata of the program, we could 
+only save the changes made on the program, this could optimize the memory consumption of \ac{Flik},
+nevertheless, this would require a more complex logic to be implemented. 
+
+Moreover, the students suggested that the visual interface could be improved, as it was not very 
+intuitive for them to use it (taking into account most of them were not used to use a debugger).
+\ac{Flik} could have a VSCode pluging to be added to the editor, so the user could use the debugger 
+in a more friendly way, and also have the possibility to use the debugger in a more visual way.
+
+Finally, \ac{Flik} could be improved by integrating the environment visuals made in matplotlib
+graphs or pygame graphs in the visual interface, so the user could have a better understanding of 
+the environment and the agent's behavior, while debugging the program.
 

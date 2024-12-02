@@ -19,22 +19,30 @@ specifically the following features:
     the value of a variable. This will allow us to check if the problem is a 
     not well design hyperparameter, or it will let us interact directly with 
     the code without stopping the execution and losing the state of the program 
-    and the time training.
+    and the time training. 
     \item Modifying variables: just as we said before, we would want to have a 
     tool that will let us modify the variables during execution time. Which means
     that the tool must not kill the program, but keep working with the state, 
     and variables.
 \end{itemize}
 
+This features aim to tackle the problem of interaction with the program, as it allows 
+to inspect in a deeper way the state of the program in terms of variables, and it provides
+a functionality of interacting with the execution of the program going forward and backwards.
+Additionally, we also aim to provide a visual interface that will aim to manage the 
+complexity of \ac{RL} programs, making an easier way for the user to understand 
+the program behavior, and interact with it.
+
 Therefore, the proposed solution in this work is the creation of a back-in-time debugger with the 
 functionalities mentioned above, as they provide more value to debug \ac{RL} agents. This 
 is not a traditional debugger; rather, it allows for an understanding of the 
 internal state of the agent, the decisions it makes, and the rewards it 
-receives. In other words, it allows the developer to interact with the program, modify
-variables, and continue the program's execution, by allowing to understand 
-the execution context of the agent in terms of variables, environment, and rewards. 
+receives. In other words, it helps the developer to understand the execution context of the
+agent in terms of variables, values, environment, states and the rewards. Additionally, with 
+our debugger, developers can interact with the program at run time, modifying the values 
+of the variables and continue the program's execution.
 
-Additionally, aims to provide a deeper understanding of the behavior of 
+Moreover, we aim to provide a deeper understanding of the behavior of 
 RL programs and to identify errors that arise during the learning process. 
 This would allow for the evaluation of the construction and quality of 
 software developed for RL and help formulate strategies to improve the 
@@ -49,23 +57,23 @@ The debugger is a key component of the proposed framework, as it allows
 developers to interact with the RL program during execution, inspect the 
 internal state of the agent, and modify its behavior in real-time.
 
-\ac{Flik} is a console-based debugger, based on \ac{PDB} debugger. Add features 
+\ac{Flik} is a console-based debugger, constructed over \ac{PDB} debugger. \ac{Flik} adds features 
 such as colored syntax highlighting, tracking of variable states, and capturing stdout output 
 from executed lines. The following are the three major features \ac{Flik} has:
 \begin{itemize}
     \item \ac{Flik} saves the state in each step, it saves the local and global variables, 
     in a history variable. Additionally, other metadata like the information of the line 
-    being executed is saved. This allows us to work later on the stepping back feature.
+    being executed is saved. This allows us to work later on the stepping back feature. 
     \item Additionally, \ac{Flik} knows how to restore a previous state of a program, as 
     in the previous feature saves every information needed from the stack and the variables 
-    to restore the state based on the history.
+    to restore the state based on the history. 
     \item Finally, \ac{Flik} performs the stepping back feature, it is created as a custom 
     \ac{PDB} command, and it has the same format as any other command. This takes the state
     saved in the specific line of code you want to step back, and it restores the state according
-    to that information.
+    to that information. 
 \end{itemize}
 
-In Python, the internal state during execution is primarily encapsulated in 
+In Python, the internal state of a program during execution is primarily encapsulated in 
 stack frames. Each stack frame contains information about the execution state of a function 
 call, including the current line number, local and global variables, and other metadata:
 \begin{itemize}
@@ -75,7 +83,7 @@ call, including the current line number, local and global variables, and other m
     \item $f\_code$: A code object representing the function's bytecode and source code metadata.
 \end{itemize}
 The state is saved in a list that stores snapshots of the frame's state (line and variables) 
-at each step, which allows stepping back the state being restored. The exec function can execute 
+at each step, which allows stepping back into the state we want to restore. The exec function can execute 
 in a list that stores snapshots of the frame's state (line and locals) at each stepcode in a 
 specified frame's context by passing $f\_globals$ and $f\_locals$ as parameters. This allows 
 \ac{Flik} to simulate running a specific line in the context of a previous frame, maintaining 
@@ -84,14 +92,14 @@ both local and global variable references, essentially restoring the saved execu
 This all done by extending the PDB class and adding custom commands to support stepping back
 and a custom interface which allows the user to interact with the debugger. The interface 
 displays the code, variables, and execution point, and allows the user (to use the \ac{PDB} 
-functions) to pause, step forward, step back, continue or restart the program, as well as 
+functions) to pause, step forward, step back, continue or restart the program, as well as to 
 modify and inspect variables. 
 
-\fref{fig:debuggerf} presents the general interface of \ac{Flik}, 
-the upper frame is shown the execution running, in this case the print 
-for the array to be sort. The middle frame shows the source code that is being 
-debugged, the lower frame shows the variables that are being used in the 
-program so far. Finally, in the lower part is the interactive console in which the user can 
+\fref{fig:debuggerf} presents the general interface of \ac{Flik}. In 
+the upper frame we have the running execution, in this case the print 
+for the array to be sorted. The middle frame shows the source code that is being 
+debugged. The lower frame shows the variables used in the 
+program so far. Finally, in the bottom of the interface we have the interactive console in which the user can 
 send the corresponding commands to the debugger.
 
 \begin{figure}[h]
