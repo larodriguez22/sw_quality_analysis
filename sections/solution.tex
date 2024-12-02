@@ -1,10 +1,11 @@
 % $Id: solution.tex 1784 2012-04-27 23:29:31Z nicolas.cardozo $
 % !TEX root = main.tex
 
-\chapter{Solution}
+\chapter{Flik: A Life's Debugger}
 \label{cha:solution}
 
-As mentioned earlier, the black box problem is not new, and it is something 
+As mentioned in Chapter 1, the black box problem of \ac{RL} programs is 
+not new, and it is something 
 that can be addressed using a debugger. However, currently, there is no 
 debugger capable of working with RL programs. The reason for this is that 
 most of the debuggers are postmortem, or they don't allow you to go back in 
@@ -25,7 +26,7 @@ specifically the following features:
     and variables.
 \end{itemize}
 
-Therefore, the proposed solution in this work is the creation of a debugger with the 
+Therefore, the proposed solution in this work is the creation of a back-in-time debugger with the 
 functionalities mentioned above, as they provide more value to debug \ac{RL} agents. This 
 is not a traditional debugger; rather, it allows for an understanding of the 
 internal state of the agent, the decisions it makes, and the rewards it 

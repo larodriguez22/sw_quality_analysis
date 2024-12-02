@@ -8,23 +8,25 @@
 
 % Section: Explanation of RL
 % common bugs in RL programs.
-Before starting with the problem let's understand a little bit how \ac{RL} work and why they are 
-important to properly develop in nowdays.
-\ac{RL} algorithms were introduced by \citet{Sutton1998}, the idea behind this 
-algorithms is to learn by interaction with the environment learning the optimal policy without 
-the model of the environment. It uses an agent that learns the value function for a given policy 
+Before starting with the problem let us understand a how \ac{RL} works and why it is  
+important to properly develop in nowadays.
+\ac{RL} algorithms were introduced by \citet{Sutton1998}, the idea behind these 
+algorithms is to learn the optimal policy (a set of actions) through the interaction 
+with the environment. \ac{RL} uses an agent that learns the value function for a given policy 
 through interaction with the environment to predict an optimal solution and based on the value 
 function, it continuously develops and learns the optimal policy. One of the most common algorithms
-is Q-learning\cite{8836506}, which uses an off-policy control that separates the deferral 
+in \ac{RL} is Q-learning\cite{8836506}, which uses an off-policy control that separates the deferral 
 policy from the learning policy and updates the action selection using the Bellman optimal equations
-and the e-greed policy. As a normal \ac{RL} algorithms, QLearning involves an agent, a set of states
-$S$ and a set of actions $A$ per state. By performing an action $A\in A$, the agent transitions from
-one state to another, which will give a $reward$ to the agent. The goal of the agent is to maximize its 
-total reward. The following snippet \href{alg:qlearning} of code is the usual pseudo algorithm for 
-QLearning off policy algorithms\cite{Sutton1998}.
+and the e-greed policy. As with normal \ac{RL} algorithms, Q-learning involves an agent, a set of states
+$S_j$ and a set of actions $A$. By performing an action $a\in A$ at state $s \in S$, the agent 
+transitions from $s$ to a new state $s' \in S$, which will give a $reward$ $r$ to the agent. 
+The goal of the agent is to maximize its 
+total reward. The following \fref{lst:qlearning} 
+of code is the usual pseudo algorithm for 
+Q-learning off policy algorithms\cite{Sutton1998}.
 
 \begin{algorithm}
-\caption{Q Learning Algorithm}\label{alg:qlearning}
+\caption{Q-Learning Algorithm}\label{lst:qlearning}
 \begin{algorithmic}
 \Require An environment with states $S$, actions $A$, and reward function $R(s, a)$
 \Require A learning rate $\alpha \in [0, 1]$
@@ -50,33 +52,37 @@ QLearning off policy algorithms\cite{Sutton1998}.
 \end{algorithmic}
 \end{algorithm}
 
-\ac{RL} programs have a wide range of applications\cite{8836506}: from control of industial process (improving 
-the performance of the on-line learning control system or optimizing temperature control and power consumtion),
-to computer networking (improving adaptability of Wireless Sensor Networks to changing situations and eliminating 
-the need for system redesing) and even robotics (by providing frameworks and toolkits for designing sophisticated 
-behavioral aspects). Additionally, when developing \ac{RL} programs, the usual issues that arise are logic problems, 
-regarding the learning rate, wrong deffinition for the rewards, all these problems require stronger frameworks in which 
-the development could improve for all \ac{RL} applications, and the first thing to do this by understanding and anlyzing
-the current developements.
+\ac{RL} programs have a wide range of applications, \citet{8836506} presents a comparison table with some 
+\ac{RL} applications. Nevertheless, some of the most them could be: from control of industrial process\cite{8169685} (improving 
+the performance of the on-line learning control system or optimizing temperature control and power consumption),
+to computer networking\cite{AlRawi2013ApplicationOR} (improving adaptability of Wireless Sensor Networks to changing situations and eliminating 
+the need for system redesign) and robotics\cite{zhang2015visionbaseddeepreinforcementlearning} (by providing frameworks and toolkits for designing sophisticated 
+behavioral aspects). 
+
+When developing \ac{RL} programs, issues arise in the application logic like wrong value for the
+learning rate or wrong definition of the rewards. This requires a call for the developer for stronger frameworks in which 
+the implementation (and implementation experience) could improve for \ac{RL} applications. One possible first step 
+is in the creation of tools to help developers understand and analyze their programs and their behavior.
 
 \section{Problem}
 
-\ac{RL} programs (like all \ac{ML}), 
-have a significant limitation and a major problem: they function as a black box. 
-This means that it is impossible to know how they reached a decision. This poses 
+\ac{RL} programs (like \ac{ML} programs), 
+have a significant limitation: they function as a black box. 
+This means that it is impossible to know how the programs reached a decision. This poses 
 a problem in many fields, as it often becomes difficult to identify why a model 
 fails to converge or why it does not reach an optimal or expected solution as 
 anticipated by the developer. In the case of \ac{RL}, this issue is particularly 
 pronounced because it is challenging to determine whether the agent is learning 
-correctly or if it is learning something inappropriate.
+correctly or if it is learning an inappropriate policy.
 
 Furthermore, \ac{RL} programs are notoriously difficult to debug due to the extensive 
 training periods they require, which demand substantial computational power. This 
 complexity makes it incredibly challenging to locate errors, even when using a 
 debugger for standard programs. Traditional debugging tools are often inadequate 
 for tracing the issues in \ac{RL} due to the intricate and prolonged nature of the 
-training processes. This is because \ac{RL} programs have an added difficulty: they 
-operate with a different execution cycle compared to traditional programs.
+training processes. 
+% This is because \ac{RL} programs have an added difficulty: they 
+% operate with a different execution cycle compared to traditional programs.
 
 In conventional software, the execution flow is typically linear and predictable, 
 allowing developers to trace and debug step-by-step with relative ease. However, 
@@ -96,7 +102,8 @@ over many iterations.
 Moreover, the need for substantial computational resources and extended training 
 periods adds to the challenge. The iterative process can take hours, days, or 
 even weeks, making it impractical to simply restart the training from scratch 
-each time an error is encountered. This necessitates advanced tools and methods 
+each time an error is detected. The aforementioned problems and characteristics
+of the execution in \ac{RL} posits the need for advanced tools and methods 
 for visualizing the agent's behavior, monitoring its learning progress, and 
 pinpointing issues without having to re-run lengthy training sessions.
 
@@ -107,12 +114,26 @@ for advancing the field of reinforcement learning and making its applications
 more reliable and interpretable.
 
 Therefore, there is a pressing need for a tool that allows for the visualization 
-of an \ac{RL} agent's behavior and facilitates easier debugging of the program. 
+of an \ac{RL} agent's behavior and facilitates appropriate debugging of \ac{RL} the programs. 
 Such a tool would significantly enhance the transparency and interpretability 
 of \ac{RL} models, making it easier for developers to understand, refine, and correct 
-the learning process. This is a gap in the current landscape, and addressing it 
+the learning process. This is a gap in the current literature, and addressing it 
 is the focus of this work.
 
+\section{Outline}
+The structure of the present work is as follows: Chapter 2 an introduction to debuggers (\fref{sec:deb}),
+it also provides a comprehensive review of the state of the art in the field of back in 
+time debuggers in any programming language (\fref{sec:other}), in python (\fref{sec:py})
+and in \ac{RL} (\fref{sec:ai}). Chapter 3 presents the proposed solution, \ac{Flik}, 
+a back in time debugger for \ac{RL} programs. Chapter 4 presents the evaluation of the tool,
+the three proposed exercises (\fref{sec:grid-eval}, \fref{sec:rooms-eval} and 
+\fref{sec:cars-eval}) and the evaluation setup (\fref{sec:evaluation}). Chapter 5 presents the 
+results of the evaluation and the feedback from the participants, divided in the 
+three main parts of the survey: general results (\fref{sec:general-knowledge}), tasks 
+results (\fref{sec:tasks-results}) and usability results (\fref{sec:usability}). It also adds 
+a final part for the discussion of the results (\fref{sec:discussion}). 
+Finally, Chapter 6 presents the conclusions (\fref{sec:conclusions}) 
+and future work (\fref{sec:future-work}) of the present work.
 
 \endinput
 
